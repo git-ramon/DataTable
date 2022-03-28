@@ -7,9 +7,6 @@
 [![GitHub license](https://img.shields.io/github/license/codeigniter4/CodeIgniter4)](https://github.com/codeigniter4/CodeIgniter4/blob/develop/LICENSE)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/codeigniter4/CodeIgniter4/pulls)
 <br>
-# Acessar
-
-Acesso atraves do Github Pages: https://git-ramon.github.io/DataTable/
 
 # Instalação
 
