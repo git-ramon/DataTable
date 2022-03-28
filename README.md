@@ -59,7 +59,7 @@ Para incluir DataTables em sua página, basta incluir o seguinte HTML (lembre-se
                 } );
             } );
 
-Arquivo Javascript: <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+Arquivo Javascript: <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script> <br>
 Arquivo Css: link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
 
 ### Instalação local
@@ -77,22 +77,23 @@ DataTables e suas extensões estão disponíveis como pacotes NPM . O nome base 
 
 Por exemplo, o seguinte pode ser usado para instalar DataTables e seu estilo padrão:
 
-npm install datatables.net   <br>
-npm install datatables.net-dt <br>
+ - npm install datatables.net   <br>
+ - npm install datatables.net-dt <br>
 
 Todos os pacotes DataTables exportam uma função de fábrica que pode ser executada com dois argumentos opcionais - o windowobjeto e jQuery a ser usado - novamente, consulte o guia de instalação do NPM para obter detalhes sobre esses parâmetros. Ao usar o Browserify , você pode simplesmente executar a função sem nenhum parâmetro - por exemplo:
 
-var $  = require( 'jquery' ); <br>
-var dt = require( 'datatables.net' )(); <br>
+ - var $  = require( 'jquery' ); <br>
+ - var dt = require( 'datatables.net' )(); <br>
 
 # Inicializando DataTables
 
 É quase isso! Temos a tabela HTML que queremos aprimorar e temos todo o software e estilos de que precisamos. Tudo o que é necessário agora é dizer ao DataTables para realmente fazer sua mágica na mesa. Isso é feito com algumas linhas de Javascript:
 
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-
+          
+            $(document).ready( function () {
+                $('#table_id').DataTable();
+            } );
+            
 
 Se você já usou jQuery antes, você reconhecerá a forma deste script: esperamos que o documento esteja totalmente pronto, e então selecionamos a tabela que queremos e executamos a função DataTables nela.
 
@@ -104,9 +105,9 @@ Se você quiser personalizar seu DataTable, isso pode ser feito especificando pa
 
 Se você preferir escrever Javascript sem usar as abstrações que o jQuery fornece, você pode inicializar DataTables (a partir da v1.11) usando:
 
-  let table = new DataTable('#example', {
-      // options
-  });<font>
+              let table = new DataTable('#example', {
+                  // options
+              });
   
 Onde os parâmetros para new DataTable()são:
 
