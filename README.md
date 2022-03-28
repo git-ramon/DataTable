@@ -1,4 +1,3 @@
-# CodeIgniter 4 Development
 
 [![Build Status](https://github.com/codeigniter4/CodeIgniter4/workflows/PHPUnit/badge.svg)](https://github.com/codeigniter4/CodeIgniter4/actions?query=workflow%3A%22PHPUnit%22)
 [![Coverage Status](https://coveralls.io/repos/github/codeigniter4/CodeIgniter4/badge.svg?branch=develop)](https://coveralls.io/github/codeigniter4/CodeIgniter4?branch=develop)
@@ -9,85 +8,108 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/codeigniter4/CodeIgniter4/pulls)
 <br>
 
-## What is CodeIgniter?
+# Instalação
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+DataTables é uma poderosa biblioteca Javascript para adicionar recursos de interação a tabelas HTML e, embora a simplicidade seja um princípio de design central para o projeto como um todo, pode parecer bastante assustador começar. No entanto, dar esses primeiros passos e executar DataTables em seu site é bastante simples, pois você precisa incluir apenas dois arquivos adicionais em sua página:
 
-This repository holds the source code for CodeIgniter 4 only.
-Version 4 is a complete rewrite to bring the quality and the code into a more modern version,
-while still keeping as many of the things intact that has made people love the framework over the years.
+O arquivo Javascript DataTables
+O arquivo CSS DataTables
+Existem outros arquivos disponíveis, como Editor para adicionar recursos de edição e outros plug-ins , que podem ser usados ​​para estender o conjunto de recursos de DataTables, mas basicamente, tudo o que você precisa fazer é incluir esses dois arquivos para começar a funcionar!
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+# Requisitos
 
-### Documentation
+Antes de começarmos, precisamos considerar os requisitos que o DataTables tem para operar.
 
-The [User Guide](https://codeigniter4.github.io/userguide/) is the primary documentation for CodeIgniter 4.
+### Dependências
 
-The current **in-progress** User Guide can be found [here](https://codeigniter4.github.io/CodeIgniter4/).
-As with the rest of the framework, it is a work in progress, and will see changes over time to structure, explanations, etc.
+DataTables tem apenas uma dependência de biblioteca (outro software no qual ele depende para funcionar) - jQuery . Sendo um plug-in do jQuery, o DataTables faz uso de muitos dos excelentes recursos que o jQuery fornece e se conecta ao sistema de plug-in do jQuery, da mesma forma que todos os outros plug-ins do jQuery . jQuery 1.7 ou mais recente funcionará com DataTables, embora normalmente você queira usar a versão mais recente. DataTables inclui tudo o que é necessário para operar.
 
-You might also be interested in the [API documentation](https://codeigniter4.github.io/api/) for the framework components.
+### HTML
 
-## Important Change with index.php
+Para que DataTables possa aprimorar uma tabela HTML, a tabela deve ser HTML válida, bem formatada, com um cabeçalho ( thead) e um corpo único ( tbody). Um rodapé opcional ( tfoot) também pode ser usado. <br>
+Se você estiver gerando seu documento HTML usando um programa do lado do servidor, como um script PHP, um script Ruby, um programa C# ou qualquer outra coisa - tudo o que eles precisam fazer é gerar sua tabela assim. <br>
+Isso é exatamente o que você teria para uma tabela HTML normal, embora às vezes você precise adicionar as tags theade tbody, pois elas nem sempre são usadas (elas permitem que DataTables saiba o que deve ser usado para os cabeçalhos das colunas e as tags click-to -controles de pedidos).
 
-index.php is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-CodeIgniter is developed completely on a volunteer basis. As such, please give up to 7 days
-for your issues to be reviewed. If you haven't heard from one of the team in that time period,
-feel free to leave a comment on the issue so that it gets brought back to our attention.
-
-We use GitHub issues to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-If you raise an issue here that pertains to support or a feature request, it will
-be closed! If you are not sure if you have found a bug, raise a thread on the forum first -
-someone else may have encountered the same thing.
-
-Before raising a new GitHub issue, please check that your bug hasn't already
-been reported or fixed.
-
-We use pull requests (PRs) for CONTRIBUTIONS to the repository.
-We are looking for contributions that address one of the reported bugs or
-approved work packages.
-
-Do not use a PR as a form of feature request.
-Unsolicited contributions will only be considered if they fit nicely
-into the framework roadmap.
-Remember that some components that were part of CodeIgniter 3 are being moved
-to optional packages, with their own repository.
-
-## Contributing
-
-We **are** accepting contributions from the community!
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/contributing/README.md).
-
-## Server Requirements
-
-PHP version 7.3 or higher is required, with the following extensions installed:
+Observe que DataTables pode realmente gerar o thead e tbody para você, junto com todas as linhas e células da tabela, se você estiver usando dados de origem Ajax, mas no momento vamos nos concentrar em HTML simples.
+Observe também que, embora DataTables suporte cols e rows no cabeçalho e rodapé da tabela, eles não são suportados nas tabelas tbody e não devem estar presentes.
 
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+# Instalando Javascript/CSS
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+A parte principal da instalação do DataTables é incluir os arquivos de origem do DataTables em sua página. Conforme observado no início desta página, isso envolve simplesmente incluir os arquivos Javascript e CSS do DataTables. O arquivo CSS é realmente opcional, mas fornece um estilo padrão para sua tabela para torná-la boa com o mínimo de esforço. Consulte o criador do tema de estilo se desejar personalizar as cores do CSS DataTables padrão.
 
-- json (enabled by default - don't turn it off)
-- xml (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
+Os arquivos necessários podem ser instalados de várias maneiras diferentes:
 
-## Running CodeIgniter Tests
+Usando a CDN DataTables
+Localmente
+Com um gerenciador de pacotes como NPM.
 
-Information on running the CodeIgniter test suite can be found in the [README.md](tests/README.md) file in the tests directory.
+### CDN
+
+Para incluir DataTables em sua página, basta incluir o seguinte HTML (lembre-se de incluir jQuery também ):
+
+
+
+            $(document).ready(function() {
+            $('#tableuser').DataTable( {
+                "ajax": "Ajax/Usuarios/getDados",
+                "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json" // Traduçao dos campos nativos 
+                    }
+                } );
+            } );
+
+Arquivo Javascript: <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+Arquivo Css: link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+
+### Instalação local
+
+Se você preferir não usar um CDN e, em vez disso, ter os arquivos hospedados em seu próprio servidor, ou se quiser modificar os arquivos, é simples continuar com DataTables.
+
+Basta usar o construtor de download para baixar a versão mais recente do DataTables, selecionar qualquer software adicional e estilo desejado e baixar o pacote personalizado. Em seguida, descompacte e faça o upload para o seu servidor web. Você terá então um diretório chamado DataTables disponível em seu servidor. Em seguida, inclua DataTables em sua página usando o seguinte HTML:
+
+Arquivo Css: link rel="stylesheet" type="text/css" href="/DataTables/datatables.css" <br>
+Arquivo Javascript: <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+
+### NPM
+
+DataTables e suas extensões estão disponíveis como pacotes NPM . O nome base do pacote é datatables. nele as extensões e opções de integração de estilo estão disponíveis como pacotes individuais - consulte o guia de instalação do NPM para obter detalhes completos sobre os pacotes disponíveis.
+
+Por exemplo, o seguinte pode ser usado para instalar DataTables e seu estilo padrão:
+
+npm install datatables.net   <br>
+npm install datatables.net-dt <br>
+
+Todos os pacotes DataTables exportam uma função de fábrica que pode ser executada com dois argumentos opcionais - o windowobjeto e jQuery a ser usado - novamente, consulte o guia de instalação do NPM para obter detalhes sobre esses parâmetros. Ao usar o Browserify , você pode simplesmente executar a função sem nenhum parâmetro - por exemplo:
+
+var $  = require( 'jquery' ); <br>
+var dt = require( 'datatables.net' )(); <br>
+
+# Inicializando DataTables
+
+É quase isso! Temos a tabela HTML que queremos aprimorar e temos todo o software e estilos de que precisamos. Tudo o que é necessário agora é dizer ao DataTables para realmente fazer sua mágica na mesa. Isso é feito com algumas linhas de Javascript:
+
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+
+Se você já usou jQuery antes, você reconhecerá a forma deste script: esperamos que o documento esteja totalmente pronto, e então selecionamos a tabela que queremos e executamos a função DataTables nela.
+
+É isso! DataTables adicionará ordenação, pesquisa, paginação e informações à sua tabela por padrão, dando aos seus usuários finais a capacidade de encontrar as informações que desejam o mais rápido possível.
+
+Se você quiser personalizar seu DataTable, isso pode ser feito especificando parâmetros de configuração em um objeto passado para a DataTable()função. Para obter informações sobre como usar esses parâmetros de configuração, consulte a página do manual de opções .
+
+# Inicialização não-jQuery
+
+Se você preferir escrever Javascript sem usar as abstrações que o jQuery fornece, você pode inicializar DataTables (a partir da v1.11) usando:
+
+  let table = new DataTable('#example', {
+      // options
+  });<font>
+  
+Onde os parâmetros para new DataTable()são:
+
+Um seletor DOMString ou elementos HTML para selecionar a(s) tabela(s) do DOM.
+Um objeto de opções de DataTables .
+E o construtor retornará uma instância da API DataTables permitindo a manipulação da tabela
